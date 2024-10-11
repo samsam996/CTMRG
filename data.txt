@@ -1,0 +1,9 @@
+# PARAMETERS OF THE SIMULATION
+
+chi=20
+temp_low=1
+temp_high=3.2
+nbstep=20
+
+# Boundary condition can be either fixed or open
+boundary_condition=fixed 
