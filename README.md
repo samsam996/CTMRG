@@ -5,7 +5,7 @@ Simulate the 2D ising model with the Corner Transfer Matrix Renormalisation Grou
 To run the code, use the following command:
 
 ```
-python main.py --input data.txt
+python main.py --input parameters.txt
 ```
 
 [1] https://arxiv.org/abs/cond-mat/9507087
