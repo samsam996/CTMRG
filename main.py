@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     temp = np.linspace(temp_low,temp_high,nbstep)
     magne = []
-
+    free_energy = []
 
     for i in range(len(temp)):
   
@@ -90,9 +90,14 @@ if __name__ == '__main__':
             err = free_ener - tmp
             print('it : ',it, ', error : ',err)
 
-
         magne.append(one_site_obs(a,b,my_ctm))
+        free_energy.append(free_ener)
 
+
+
+    with open('output.txt', 'w') as file:
+        for i in range(len(temp)):
+            file.write(f"{temp[i]} {magne[i]} {free_energy[i]}\n")
 
     plt.plot(temp, magne, 'o')
     plt.xlabel('temperature')
