@@ -6,7 +6,7 @@ temp_high=3.2
 nbstep=20
 J=1
 
-# model can either be: Ising or Potts 
+# model can either be: Ising, Potts or AshkinTeller
 model=AshkinTeller
 
 # If the model is the q-state Potts model

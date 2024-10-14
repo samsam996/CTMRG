@@ -1,4 +1,4 @@
-# CTMRG for the 2D Ising model
+# CTMRG for 2D classical models
 
 Simulate a series of 2D classical models with the Corner Transfer Matrix Renormalisation Group (CTMRG) algorithm [1]. The parameters are fixed in the parameters.txt file and the plot of magnetisation is saved in the figure folder. The temperature, magnetisation and free energy per site are stored in the output.txt file. 
 
