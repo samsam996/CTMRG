@@ -4,6 +4,16 @@ chi=20
 temp_low=1
 temp_high=3.2
 nbstep=20
+J=1
+
+# model can either be: Ising or Potts 
+model=AshkinTeller
+
+# If the model is the q-state Potts model
+q=3
+
+# if the model is Ashkin-Teller
+lambda=1
 
 # Boundary condition can be either fixed or open
 boundary_condition=fixed 

@@ -8,6 +8,9 @@ import sys
 
 from src import CTMRG_C4v
 from src import Ising2D
+from src import qStatePotts
+from src import AshkinTeller
+
 from src import one_site_obs
 from src import partition_function
 
@@ -25,7 +28,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    d = 2
+
     Tc = 2/(np.log(np.sqrt(2)+1))
 
 
@@ -59,7 +62,10 @@ if __name__ == '__main__':
     temp_high = variables['temp_high']
     nbstep = variables['nbstep']
     bc = variables['boundary_condition']
-
+    model = variables['model']
+    q = variables['q']
+    J = variables['J']
+    lmbda = variables['lambda']
 
     temp = np.linspace(temp_low,temp_high,nbstep)
     magne = []
@@ -67,8 +73,19 @@ if __name__ == '__main__':
 
     for i in range(len(temp)):
   
-        a,b = Ising2D(temp[i],1)
+        if model == "Ising":
+            a,b = Ising2D(temp[i],J)
+        elif model=="Potts":
+            a,b = qStatePotts(temp[i],J,q)
+        elif model=="AshkinTeller":
+            a,b = AshkinTeller(temp[i],J,lmbda)
+        else: 
+            print("Wrong choice of model, please chose Ising, Potts or AshkinTeller") 
+            sys.exit("Exiting the program due to invalid model.")
 
+
+
+        d = np.shape(a)[0]
         my_ctm = CTMRG_C4v(chi,d)
 
         if bc == "fixed":
