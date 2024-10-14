@@ -8,4 +8,6 @@ To run the code, use the following command:
 python main.py --input parameters.txt
 ```
 
+Required packages are stored in the requirements.txt file
+
 [1] https://arxiv.org/abs/cond-mat/9507087
