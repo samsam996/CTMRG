@@ -88,9 +88,9 @@ if __name__ == '__main__':
 
         d = np.shape(a)[0]
         my_ctm = CTMRG_C4v(chi,d)
-        my_ctm2 = CTMRG_nosymm(chi,d)
-        my_ctm2.fixed_boundary_condition(a)
-        my_ctm2.evolution(a)
+        # my_ctm2 = CTMRG_nosymm(chi,d)
+        # my_ctm2.fixed_boundary_condition(a)
+        # my_ctm2.evolution(a)
   
        
 
@@ -109,13 +109,12 @@ if __name__ == '__main__':
 
         while abs(err) > 1e-8 and it < 100:
             it += 1
-            # my_ctm.evolution(a)
+            my_ctm.evolution(a)
             # my_ctm2.evolution(a)
-            my_ctm2.evolution(a)
 
             tmp = free_ener
-            free_ener = -temp[i]*np.log(my_ctm2.partition_function(a))
-            free_ener = my_ctm2.partition_function(a)
+            free_ener = -temp[i]*np.log(my_ctm.partition_function(a))
+            free_ener = my_ctm.partition_function(a)
 
             # free_ener = -temp[i]*np.log(my_ctm2.partition_function(a))
             err = free_ener - tmp
