@@ -1,13 +1,13 @@
 # PARAMETERS OF THE SIMULATION
 
-chi=20
-temp_low=1
-temp_high=3.2
+chi=3
+temp_low=2.2
+temp_high=2.4
 nbstep=20
 J=1
 
 # model can either be: Ising, Potts or AshkinTeller
-model=AshkinTeller
+model=Ising
 
 # If the model is the q-state Potts model
 q=3

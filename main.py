@@ -7,12 +7,13 @@ import os
 import sys
 
 from src import CTMRG_C4v
+from src import CTMRG_nosymm
 from src import Ising2D
 from src import qStatePotts
 from src import AshkinTeller
 
-from src import one_site_obs
-from src import partition_function
+# from src import one_site_obs
+# from src import partition_function
 
 
 if __name__ == '__main__':
@@ -87,6 +88,11 @@ if __name__ == '__main__':
 
         d = np.shape(a)[0]
         my_ctm = CTMRG_C4v(chi,d)
+        my_ctm2 = CTMRG_nosymm(chi,d)
+        my_ctm2.fixed_boundary_condition(a)
+        my_ctm2.evolution(a)
+  
+       
 
         if bc == "fixed":
             my_ctm.fixed_boundary_condition(a)
@@ -99,15 +105,23 @@ if __name__ == '__main__':
         free_ener = 0
         err = 1
         it = 0
-        while abs(err) > 1e-8:
+
+
+        while abs(err) > 1e-8 and it < 100:
             it += 1
-            my_ctm.evolution(a)
+            # my_ctm.evolution(a)
+            # my_ctm2.evolution(a)
+            my_ctm2.evolution(a)
+
             tmp = free_ener
-            free_ener = -temp[i]*np.log(partition_function(a,my_ctm))
+            free_ener = -temp[i]*np.log(my_ctm2.partition_function(a))
+            free_ener = my_ctm2.partition_function(a)
+
+            # free_ener = -temp[i]*np.log(my_ctm2.partition_function(a))
             err = free_ener - tmp
             print('it : ',it, ', error : ',err)
 
-        magne.append(one_site_obs(a,b,my_ctm))
+        magne.append(my_ctm.one_site_obs(a,b))
         free_energy.append(free_ener)
 
 
